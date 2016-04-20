@@ -4,7 +4,7 @@ data:
     - ~/.m2:/root/.m2
 
 install:
-  image: maven:3-jdk-8
+  image: agileworks/maven
   volumes:
     - ./:/app
   volumes_from:
@@ -13,7 +13,7 @@ install:
   command: "mvn install"
 
 test:
-  image: maven:3-jdk-8
+  image: agileworks/maven
   volumes:
     - ./:/app
   volumes_from:
@@ -22,7 +22,7 @@ test:
   command: "mvn test"
 
 server:
-  image: maven:3-jdk-8
+  image: agileworks/maven
   volumes:
     - ./:/app
   volumes_from:
@@ -33,7 +33,7 @@ server:
   command: "mvn spring-boot:run"
 
 package:
-  image: maven:3-jdk-8
+  image: agileworks/maven
   volumes:
     - ./:/app
   volumes_from:
