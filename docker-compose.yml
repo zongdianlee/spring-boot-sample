@@ -1,7 +1,8 @@
 data:
-  image: ubuntu
+  image: alpine
   volumes:
     - ~/.m2:/root/.m2
+  command: "/bin/sh"
 
 install:
   image: agileworks/maven
