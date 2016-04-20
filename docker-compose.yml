@@ -1,10 +1,42 @@
-server:
-  container_name: spring_boot_run
-  image: agileworks/maven
-  command: "mvn spring-boot:run"
-  working_dir: /app
+data:
+  image: ubuntu
   volumes:
-    - $HOME/.m2:/root/.m2
+    - ~/.m2:/root/.m2
+
+install:
+  image: maven:3-jdk-8
+  volumes:
     - ./:/app
+  volumes_from:
+    - data
+  working_dir: /app
+  command: "mvn install"
+
+test:
+  image: maven:3-jdk-8
+  volumes:
+    - ./:/app
+  volumes_from:
+    - data
+  working_dir: /app
+  command: "mvn test"
+
+server:
+  image: maven:3-jdk-8
+  volumes:
+    - ./:/app
+  volumes_from:
+    - data
+  working_dir: /app
   ports:
    - "8000:8000"
+  command: "mvn spring-boot:run"
+
+package:
+  image: maven:3-jdk-8
+  volumes:
+    - ./:/app
+  volumes_from:
+    - data
+  working_dir: /app
+  command: "mvn package"
