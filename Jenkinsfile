@@ -29,15 +29,14 @@ node {
     sh "docker-compose stop server"
   }
 
-  stage 'project project'
+  stage 'package project'
   sh "docker-compose run --rm package"
-
 
   stage 'build docker production image'
   sh "make build-docker-prod-image"
 
   stage 'publish docker production image'
-  sh "docker push agileworks/sails_sample_prod"
+  sh "docker push agileworks/java_sample_prod"
 
   stage 'deploy production'
   sh "make deploy-production"
