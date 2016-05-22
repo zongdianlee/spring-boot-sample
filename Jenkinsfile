@@ -12,9 +12,6 @@ node {
   stage 'build docker env'
   sh "make build-docker-env"
 
-  stage 'install project'
-  sh "docker-compose run --rm install"
-
   stage 'test project'
   sh "docker-compose run --rm test"
 
