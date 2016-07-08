@@ -44,7 +44,7 @@ public class CityTemp implements Serializable {
 	@Column(nullable = false)
 	private String map;
 
-	protected City() {
+	protected CityTemp() {
 	}
 
 	public CityTemp(String name, String country) {
