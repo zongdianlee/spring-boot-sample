@@ -112,6 +112,23 @@
 						</execution>
 				 </executions>
 			</plugin>
+
+			<plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>3.0.1</version>
+          <executions>
+              <execution>
+                  <goals>
+                      <goal>check</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <effort>Max</effort><!--檢測的程度，值可為Min、Default或是Max-->
+              <xmlOutput>true</xmlOutput>
+          </configuration>
+      </plugin>
 		</plugins>
 	</build>
 
