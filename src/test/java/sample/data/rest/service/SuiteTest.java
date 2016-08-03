@@ -2,6 +2,7 @@ package sample.data.rest.service;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -14,6 +15,7 @@ import sample.data.rest.service.HotelRepositoryIntegrationTests;
         HotelRepositoryIntegrationTests.class,
         CityRepositoryIntegrationTests.class
 })
+@Ignore
 public class SuiteTest {
     @BeforeClass
     public static void setUpClass() {
