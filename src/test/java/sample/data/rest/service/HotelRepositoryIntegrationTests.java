@@ -16,6 +16,7 @@
 
 package sample.data.rest.service;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import sample.data.rest.SampleDataRestApplication;
@@ -45,18 +46,24 @@ public class HotelRepositoryIntegrationTests {
     @Autowired
     CityRepository cityRepository;
 
+    @BeforeClass
+    public static void setUpClass() {
+        System.out.println("=== Hotel setup ===");
+    }
+
+
     @Test
     public void findsFirstPageOfCities() {
-
+        System.out.println("=== hotal findsFirstPageOfCities ===");
         Page<Hotel> hotels = this.repository.findAll(new PageRequest(0, 10));
         assertThat(hotels.getTotalElements()).isGreaterThan(20L);
     }
 
     @Test
-    public void findByCityAndName() {
+    public void findByCity() {
+        System.out.println("=== hotal findByCity ===");
         City city = cityRepository.findByNameAndCountryAllIgnoringCase("Melbourne",
                 "Australia");
-        System.out.println("===city==="+ city.getName());
         Hotel hotel = this.repository.findByCity(city);
         assertThat(hotel).isNotNull();
         assertThat(hotel.getName()).isEqualTo("The Langham");
