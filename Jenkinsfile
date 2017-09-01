@@ -4,7 +4,7 @@ node {
     
     stage 'checkout project'
     //git url: 'https://github.com/agileworks-tw/spring-boot-sample.git'
-    git scm
+    checkout scm
 
     stage 'check env'
 
