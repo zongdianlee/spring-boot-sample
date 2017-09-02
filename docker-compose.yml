@@ -26,18 +26,16 @@ server:
   image: agileworks/maven
   volumes:
     - ./:/app
-  volumes_from:
-    - data
+    - ~/.m2:/root/.m2
   working_dir: /app
   ports:
-   - "8000:8000"
+   - "8800:8000"
   command: "mvn spring-boot:run"
 
 package:
   image: agileworks/maven
   volumes:
     - ./:/app
-  volumes_from:
-    - data
+    - ~/.m2:/root/.m2
   working_dir: /app
   command: "mvn package"
