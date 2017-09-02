@@ -1,8 +1,8 @@
 build-docker-env:
-	docker build -t agileworks/maven dockers/maven
+	docker build -t localhost:5000/maven dockers/maven
 
 build-docker-prod-image:
-	docker build -t agileworks/java_sample_prod .
+	docker build -t localhost:5000/java_sample_prod .
 
 deploy-production:
 	- ssh jenkins@localhost docker rm -f java_sample_prod
