@@ -42,6 +42,12 @@ node {
   stage 'publish docker production image'
   sh "docker push localhost:5000/java_sample_prod"
 
+  try{
+    sh "docker rm -f java_sample_prod"
+  }catch(Exception ex) {
+    println("Catching the exception");
+  }
+
   stage 'deploy production'
   sh "make deploy-production-local"
 
