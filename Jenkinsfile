@@ -37,6 +37,6 @@ node {
   sh "docker push localhost:5000/java_sample_prod"
 
   stage 'deploy production'
-  sh "make deploy-production"
+  sh "make deploy-production-local"
 
 }
