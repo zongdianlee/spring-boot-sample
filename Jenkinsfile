@@ -51,12 +51,9 @@ pipeline {
                 sh "docker-compose run --rm package"
                 sh "make build-docker-prod-image"
                 sh "docker push localhost:5000/java_sample_prod"
+                sh "make deploy-production-local"
             }
-            post { 
-                success { 
-                    sh "make deploy-production-local"
-                }
-            }
+            
         }        
     }
 }
