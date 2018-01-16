@@ -19,9 +19,13 @@ pipeline {
         stage('test project and serve') {
             steps {
                 sh "docker-compose run --rm test"
-                step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-                step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
                 sh "docker-compose up -d server"
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                }
             }
         }
         stage('wait for confirm') {
