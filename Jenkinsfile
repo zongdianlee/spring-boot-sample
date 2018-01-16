@@ -51,7 +51,6 @@ pipeline {
                 sh "docker-compose run --rm package"
                 sh "make build-docker-prod-image"
                 sh "docker push localhost:5000/java_sample_prod"
-                sh "docker stop java_sample_prod || true && docker rm java_sample_prod || true"
             }
             post { 
                 success { 
