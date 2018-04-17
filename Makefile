@@ -4,6 +4,7 @@ start-docker-registry:
 
 build-docker-env:
 	docker build -t localhost:5000/maven dockers/maven
+	docker push localhost:5000/maven
 
 build-docker-prod-image:
 	docker build -t localhost:5000/java_sample_prod .
