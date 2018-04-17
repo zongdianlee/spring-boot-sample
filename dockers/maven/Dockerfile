@@ -1,4 +1,4 @@
-FROM alpine
+FROM localhost:5000/alpine
 
 RUN apk add --update openjdk8
 ENV MAVEN_HOME="/usr/share/maven"
