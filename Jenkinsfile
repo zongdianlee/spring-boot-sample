@@ -20,20 +20,12 @@ pipeline {
         }
       }
     }
+
     stage('test') {
-      parallel {
-        stage('test') {
-          steps {
-            sh 'mvn test'
-          }
-        }
-        stage('coverage') {
-          steps {
-            sh 'mvn cobertura:cobertura'
-          }
-        }
+      steps {
+        sh 'mvn test cobertura:cobertura'
       }
-    }
+    }      
     stage('report') {
       parallel {
         stage('report') {
