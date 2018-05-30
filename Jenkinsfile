@@ -45,7 +45,7 @@ pipeline {
         sh 'mvn package'
       }
     }
-    stage('preview') {
+    stage('stage') {
         input {
             message "Should we continue?"
             ok "Yes, we should."
@@ -57,6 +57,13 @@ pipeline {
         steps {
             echo "Hello, ${PERSON}, nice to meet you."
             sh 'make deploy-default'
+        }
+    }
+    stage('preview') {
+        input {
+            message "Should we continue?"
+            ok "Yes, we should."
+            submitter "admin"
         }
     }    
     stage('artifact') {
