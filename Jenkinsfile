@@ -48,6 +48,11 @@ pipeline {
         }
       }
     }
+    stage('package') {
+      steps {
+        sh 'mvn package'
+      }
+    }    
     stage('Artifact') {
       steps {
         archiveArtifacts(artifacts: '**/target/*.jar', fingerprint: true)
