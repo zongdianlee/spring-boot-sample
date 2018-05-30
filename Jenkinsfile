@@ -66,7 +66,7 @@ pipeline {
             submitter "admin"
         }
         steps {
-            
+          echo "every thing is good!"
         }
     }    
     stage('artifact') {
