@@ -8,12 +8,12 @@ pipeline {
     }
     stage('check env') {
       parallel {
-        stage('check env') {
+        stage('check mvn') {
           steps {
             sh 'mvn -v'
           }
         }
-        stage('') {
+        stage('check java') {
           steps {
             sh 'java -version'
           }
@@ -28,7 +28,7 @@ pipeline {
     }      
     stage('report') {
       parallel {
-        stage('report') {
+        stage('junit') {
           steps {
             junit '**/target/surefire-reports/TEST-*.xml'
           }
