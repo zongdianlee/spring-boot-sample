@@ -65,6 +65,9 @@ pipeline {
             ok "Yes, we should."
             submitter "admin"
         }
+        steps {
+            
+        }
     }    
     stage('artifact') {
       steps {
