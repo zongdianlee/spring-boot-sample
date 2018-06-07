@@ -35,7 +35,16 @@ pipeline {
     }
     stage('deploy') {
       steps {
-        sh 'make deploy-default'
+        sh '''
+docker build -t localhost:5000/spring-boot-sample-prod ./
+
+docker push localhost:5000/spring-boot-sample-prod
+
+docker pull localhost:5000/spring-boot-sample-prod
+
+docker run -d -p 8800:8000 localhost:5000/spring-boot-sample-prod
+
+'''
       }
     }
   }
