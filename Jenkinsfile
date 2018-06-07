@@ -8,7 +8,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh '''mvn cobertura:cobertura test
+        sh '''docker run -v `pwd`:/app -v $HOME/.m2:/root/.m2 -w /app localhost:5000/maven mvn cobertura:cobertura test
 '''
       }
     }
