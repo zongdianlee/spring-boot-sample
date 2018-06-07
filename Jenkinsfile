@@ -26,6 +26,11 @@ pipeline {
         }
       }
     }
+    stage('mvn package') {
+      steps {
+        sh 'mvn package'
+      }
+    }
   }
   post {
     always {
